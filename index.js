@@ -3,7 +3,7 @@ const path = require('path');
 
 const defaultOptions = {
   itemsFromCompilation: compilation => Object.keys(compilation.assets),
-  output: '../../fxmanifest.lua',
+  output: '../fxmanifest.lua',
 };
 
 function ResourceManifestPlugin(options) {
@@ -38,18 +38,6 @@ ui_page 'ui/${path}/index.html'
 files {
   ${assets.map(asset => `'ui/${path}/${asset}'`).join(`,
   `)}
-}
-  
-client_scripts {
-  'client/*.lua',
-}
-shared_scripts {
-  '@bs-pwnzor/token.lua',
-  'config.lua',
-}
-
-server_scripts {
-  'server/*.lua',
 }`;
 }
 
