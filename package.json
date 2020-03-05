@@ -1,5 +1,5 @@
 {
-  "name": "webpack-fivem-manifest",
+  "name": "webpack-fx-manifest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/2277/webpack-fivem-manifest.git"
+    "url": "git+https://github.com/BlueSky-Development/webpack-fx-manifest.git"
   },
   "keywords": [],
-  "author": "2277",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/2277/webpack-fivem-manifest/issues"
-  },
-  "homepage": "https://github.com/2277/webpack-fivem-manifest#readme",
+  "author": "Alzar",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.13"
   }

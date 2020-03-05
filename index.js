@@ -3,14 +3,14 @@ const path = require('path');
 
 const defaultOptions = {
   itemsFromCompilation: compilation => Object.keys(compilation.assets),
-  output: '../__resource.lua',
+  output: '../../fxmanifest.lua',
 };
 
 function ResourceManifestPlugin(options) {
   defaults(this, options, defaultOptions);
 }
 
-const pluginName = 'fivem-manifest-plugin';
+const pluginName = 'fivem-fx-plugin';
 
 ResourceManifestPlugin.prototype.apply = function(compiler) {
   const { itemsFromCompilation, output } = this;
@@ -29,10 +29,28 @@ ResourceManifestPlugin.prototype.apply = function(compiler) {
 
 function format(assets, path) {
   return `
-ui_page "${path}/index.html"
+fx_version 'adamant'
 
-files{${assets.map(asset => `"${path}/${asset}"`).join(',')}}
-  `;
+game 'gta5'
+
+ui_page 'ui/${path}/index.html'
+
+files {
+  ${assets.map(asset => `'ui/${path}/${asset}'`).join(`,
+  `)}
+}
+  
+client_scripts {
+  'client/*.lua',
+}
+shared_scripts {
+  '@bs-pwnzor/token.lua',
+  'config.lua',
+}
+
+server_scripts {
+  'server/*.lua',
+}`;
 }
 
 module.exports = ResourceManifestPlugin;
